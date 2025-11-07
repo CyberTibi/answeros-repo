@@ -1,13 +1,3 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-echo "=== 1. AUR csomagok klónozása ==="
-./clone-aur-packages.sh
-
-# echo "=== 2. Calamares PKGBUILD javítása ==="
-# ./fix-calameres.sh
-
-echo "=== 3. Csomagok fordítása és repo építés ==="
-./build-to-repo.sh
-
-echo "=== Kész! A lokális repo az x86_64 könyvtárban található. ==="
+version https://git-lfs.github.com/spec/v1
+oid sha256:b61f5a04198980f258e1cf0806b7fe9919e7695c6c26c2cb63ddd4e0b0e84727
+size 332
