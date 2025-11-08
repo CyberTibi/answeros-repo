@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:446617d36f72155f0d52bf8b4a7dbbacf35d7a22f35dad55409f62d148daf3f0
-size 153
+yay-bin
+pamac-aur
+libpamac-aur
+zsh-theme-powerlevel10k
+matcha-gtk-theme
+ckbcomp
+calamares-git
+archiso-calamares-config
+localsend-bin
