@@ -7,3 +7,4 @@ ckbcomp
 calamares-git
 archiso-calamares-config
 localsend-bin
+mkinitcpio-archiso-git
