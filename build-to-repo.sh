@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:71152fec7a1e4728d26ee6fd110931187b21778a7e4073fb54b3b210cdf0094f
-size 1055
+#!/usr/bin/env bash
+set -euo pipefail
+
+BUILD_DIR="aur-builds"
+REPO_DIR="x86_64"
+REPO_NAME="answeros"
+
+# Létrehozza a repo könyvtárat, ha nem létezik
+mkdir -p "$REPO_DIR"
+
+# Végigmegy az összes csomagkönyvtáron
+for pkgdir in "$BUILD_DIR"/*; do
+    [[ -d "$pkgdir" ]] || continue
+    echo "Fordítás: $(basename "$pkgdir")"
+
+    pushd "$pkgdir" > /dev/null
+
+    # Fordítás és csomagkészítés (interaktív kérdések nélkül)
+    makepkg -sf --noconfirm --clean --cleanbuild
+
+    # A legutóbb elkészült csomag bemásolása a repo könyvtárba
+    for pkgfile in ./*.pkg.tar.zst; do
+        cp -v "$pkgfile" "../../$REPO_DIR/"
+    done
+
+    popd > /dev/null
+done
+
+# Repo adatbázis frissítése
+repo-add "$REPO_DIR/$REPO_NAME.db.tar.gz" "$REPO_DIR"/*.pkg.tar.zst
+
+# Symlinkek törlése
+echo "Symlinkek törlése..."
+rm -f $REPO_DIR/$REPO_NAME.db
+rm -f $REPO_DIR/$REPO_NAME.files
+mv $REPO_DIR/$REPO_NAME.db.tar.gz $REPO_DIR/$REPO_NAME.db
+mv $REPO_DIR/$REPO_NAME.files.tar.gz $REPO_DIR/$REPO_NAME.files
+echo "Minden kész! Az $REPO_NAME repo frissítve!"
