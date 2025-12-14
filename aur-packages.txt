@@ -1,10 +1,9 @@
-yay-bin
+yay
 pamac-aur
 libpamac-aur
 zsh-theme-powerlevel10k
 matcha-gtk-theme
 ckbcomp
-#calamares-git
-#archiso-calamares-config
+calamares-git
+# archiso-calamares-config
 localsend-bin
-mkinitcpio-archiso-git
