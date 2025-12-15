@@ -3,7 +3,7 @@ pamac-aur
 libpamac-aur
 zsh-theme-powerlevel10k
 matcha-gtk-theme
-ckbcomp
+# ckbcomp
 calamares-git
 # archiso-calamares-config
 localsend-bin
